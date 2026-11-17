@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff9f5">
+  <meta name="description" content="Doces artesanais feitos com carinho em Santarém, Pará. Conheça o cardápio da Charlô Doces e faça seu pedido pelo Instagram.">
+  <title>Charlô Doces | Um carinho em forma de doce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #fff9f5;
+      --cream-deep: #f9eee7;
+      --pink: #f06486;
+      --pink-dark: #d9476d;
+      --pink-light: #ffe3e9;
+      --chocolate: #3d2314;
+      --muted: #806b60;
+      --gold: #d49b3f;
+      --white: #fff;
+      --shadow: 0 16px 42px rgba(76, 43, 26, .09);
+      --radius: 24px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--cream); color: var(--chocolate); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .eyebrow { color: var(--pink-dark); font-size: .78rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.12; }
+    h2 { margin-bottom: 14px; font-size: clamp(2rem, 4vw, 3rem); }
+    .section-heading { max-width: 650px; margin: 0 auto 42px; text-align: center; }
+    .section-heading p { margin-bottom: 0; color: var(--muted); }
+    .button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; gap: 9px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--pink); color: var(--white); font-weight: 700; box-shadow: 0 8px 20px rgba(240, 100, 134, .23); transition: transform .2s ease, background .2s ease; }
+    .button:hover { transform: translateY(-2px); background: var(--pink-dark); }
+    .button-outline { border: 1px solid rgba(61, 35, 20, .17); background: transparent; color: var(--chocolate); box-shadow: none; }
+    .button-outline:hover { background: var(--white); color: var(--chocolate); }
+    .button svg, .text-link svg { width: 18px; height: 18px; }
+
+    /* Cabeçalho */
+    .header { position: sticky; z-index: 20; top: 0; border-bottom: 1px solid rgba(61, 35, 20, .06); background: rgba(255, 249, 245, .92); backdrop-filter: blur(14px); }
+    .nav { display: flex; min-height: 78px; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
+    .brand-mark { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 15px; background: var(--pink-light); color: var(--pink-dark); font-size: 1.35rem; }
+    .brand-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 700; line-height: 1; }
+    .brand-name small { display: block; margin-top: 5px; color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: .62rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a:not(.button) { color: #60483a; font-size: .92rem; font-weight: 600; transition: color .2s; }
+    .nav-links a:not(.button):hover { color: var(--pink-dark); }
+    .nav-links .button { min-height: 43px; padding-inline: 18px; font-size: .88rem; }
+    .menu-toggle { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border: 1px solid #f0ddd2; border-radius: 14px; background: var(--white); color: var(--chocolate); cursor: pointer; }
+    .menu-toggle svg { width: 22px; height: 22px; }
+
+    /* Hero */
+    .hero { overflow: hidden; padding: 64px 0 76px; }
+    .hero-grid { display: grid; min-height: 510px; grid-template-columns: 1fr 1fr; align-items: center; gap: 54px; }
+    .hero-copy { position: relative; z-index: 1; }
+    .hero h1 { max-width: 580px; margin: 15px 0 18px; font-size: clamp(3rem, 6vw, 5.2rem); letter-spacing: -.045em; }
+    .hero h1 span { color: var(--pink-dark); }
+    .hero-copy > p { max-width: 510px; margin-bottom: 28px; color: var(--muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 28px; color: var(--muted); font-size: .88rem; }
+    .hero-note strong { color: var(--chocolate); }
+    .note-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: #fff0c9; color: #9c691d; }
+    .hero-art { position: relative; min-height: 440px; }
+    .hero-photo { position: absolute; inset: 14px 20px 10px 24px; overflow: hidden; border: 10px solid var(--white); border-radius: 48% 48% 30px 30px; box-shadow: var(--shadow); transform: rotate(2deg); }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo::after { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 54%, rgba(47, 24, 13, .32)); content: ''; }
+    .hero-badge { position: absolute; z-index: 2; right: 0; bottom: 30px; display: grid; width: 116px; height: 116px; align-content: center; justify-items: center; border: 7px solid var(--cream); border-radius: 50%; background: #f7d88d; color: var(--chocolate); text-align: center; transform: rotate(8deg); }
+    .hero-badge strong { font-family: 'Playfair Display', Georgia, serif; font-size: 1.32rem; line-height: 1; }
+    .hero-badge span { max-width: 76px; margin-top: 5px; font-size: .65rem; font-weight: 700; line-height: 1.2; text-transform: uppercase; }
+    .hero-sparkle { position: absolute; top: 20px; left: 0; color: var(--pink); font-size: 2.2rem; }
+    .hero-sticker { position: absolute; top: 55px; right: 5px; display: grid; width: 62px; height: 62px; place-items: center; border-radius: 22px; background: var(--pink-light); color: var(--pink-dark); font-size: 1.7rem; transform: rotate(12deg); }
+
+    /* Faixa de carinho */
+    .perks { padding: 23px 0; background: var(--chocolate); color: var(--white); }
+    .perks-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .perk { display: flex; align-items: center; justify-content: center; gap: 11px; font-size: .92rem; font-weight: 600; text-align: center; }
+    .perk span:first-child { font-size: 1.25rem; }
+
+    /* Cardápio */
+    .menu-section { padding: 95px 0 100px; }
+    .menu-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .menu-card { overflow: hidden; border: 1px solid rgba(61, 35, 20, .06); border-radius: var(--radius); background: var(--white); box-shadow: 0 8px 26px rgba(76, 43, 26, .055); transition: transform .25s ease, box-shadow .25s ease; }
+    .menu-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .card-image { position: relative; height: 190px; overflow: hidden; background: var(--cream-deep); }
+    .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .menu-card:hover .card-image img { transform: scale(1.05); }
+    .tag { position: absolute; top: 13px; left: 13px; padding: 5px 11px; border-radius: 999px; background: #f7d88d; color: #694815; font-size: .7rem; font-weight: 700; }
+    .card-content { padding: 19px 18px 20px; }
+    .card-content h3 { margin-bottom: 7px; font-size: 1.28rem; }
+    .card-content p { min-height: 44px; margin-bottom: 15px; color: var(--muted); font-size: .86rem; }
+    .card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .price { color: var(--pink-dark); font-weight: 700; }
+    .text-link { display: inline-flex; align-items: center; gap: 5px; color: var(--chocolate); font-size: .82rem; font-weight: 700; }
+    .text-link:hover { color: var(--pink-dark); }
+    .price-note { margin: 20px 0 0; color: var(--muted); font-size: .78rem; text-align: center; }
+
+    /* Sobre */
+    .about-section { padding: 76px 0; background: #faeee8; }
+    .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; align-items: center; gap: 70px; }
+    .about-image { position: relative; max-width: 450px; }
+    .about-image img { width: 100%; height: 410px; border: 9px solid var(--white); border-radius: 180px 180px 28px 28px; object-fit: cover; box-shadow: var(--shadow); }
+    .about-image::after { position: absolute; z-index: -1; right: -15px; bottom: -16px; width: 78%; height: 78%; border: 2px solid #efbdc8; border-radius: 180px 180px 28px 28px; content: ''; }
+    .about-copy h2 { margin: 12px 0 18px; }
+    .about-copy p { color: var(--muted); }
+    .about-copy .button { margin-top: 8px; }
+    .about-points { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+    .about-point { display: flex; align-items: center; gap: 9px; font-size: .88rem; font-weight: 600; }
+    .about-point span { color: var(--pink-dark); font-size: 1.1rem; }
+
+    /* Localização e horários */
+    .visit-section { padding: 95px 0; }
+    .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .info-card { padding: 31px; border: 1px solid rgba(61, 35, 20, .07); border-radius: var(--radius); background: var(--white); box-shadow: 0 8px 26px rgba(76, 43, 26, .05); }
+    .info-icon { display: grid; width: 48px; height: 48px; margin-bottom: 19px; place-items: center; border-radius: 16px; background: var(--pink-light); color: var(--pink-dark); }
+    .info-icon svg { width: 23px; height: 23px; }
+    .info-card h3 { margin-bottom: 12px; font-size: 1.55rem; }
+    .info-card p { margin-bottom: 12px; color: var(--muted); }
+    .address { color: var(--chocolate) !important; font-weight: 600; }
+    .map-link { display: inline-flex; margin-top: 7px; color: var(--pink-dark); font-size: .9rem; font-weight: 700; }
+    .hours-list { display: grid; gap: 12px; margin: 18px 0 0; }
+    .hours-row { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 12px; border-bottom: 1px dashed #eadbd2; font-size: .92rem; }
+    .hours-row:last-child { padding-bottom: 0; border-bottom: 0; }
+    .hours-row strong { color: var(--chocolate); }
+    .hours-row span { color: var(--muted); white-space: nowrap; }
+    .hours-footnote { margin: 18px 0 0 !important; font-size: .79rem; }
+
+    /* Chamada final e rodapé */
+    .cta-section { padding: 0 0 82px; }
+    .cta-box { position: relative; overflow: hidden; display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 42px 50px; border-radius: 30px; background: var(--pink); color: var(--white); }
+    .cta-box::after { position: absolute; top: -90px; right: 22%; width: 230px; height: 230px; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; box-shadow: 0 0 0 25px rgba(255,255,255,.05), 0 0 0 55px rgba(255,255,255,.04); content: ''; }
+    .cta-copy { position: relative; z-index: 1; max-width: 600px; }
+    .cta-copy .eyebrow { color: #ffe5b6; }
+    .cta-copy h2 { margin: 8px 0; font-size: clamp(1.8rem, 3vw, 2.6rem); }
+    .cta-copy p { margin-bottom: 0; color: rgba(255,255,255,.86); }
+    .cta-box .button { position: relative; z-index: 1; flex-shrink: 0; background: var(--white); color: var(--pink-dark); box-shadow: none; }
+    .cta-box .button:hover { background: #fff1f4; }
+    .footer { padding: 33px 0 22px; border-top: 1px solid rgba(61, 35, 20, .08); }
+    .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 25px; }
+    .footer-note { margin: 8px 0 0; color: var(--muted); font-size: .82rem; }
+    .social-link { display: inline-flex; align-items: center; gap: 9px; color: var(--chocolate); font-weight: 700; }
+    .social-link svg { width: 21px; height: 21px; color: var(--pink-dark); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 16px; padding-top: 18px; border-top: 1px solid rgba(61, 35, 20, .08); color: var(--muted); font-size: .77rem; }
+    .footer-bottom p { margin: 0; }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 16px; }
+      .nav-links a:not(.button) { font-size: .85rem; }
+      .hero-grid { gap: 25px; }
+      .hero-art { min-height: 390px; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { gap: 40px; }
+    }
+    @media (max-width: 700px) {
+      html { scroll-padding-top: 74px; }
+      .container { width: min(100% - 32px, 540px); }
+      .nav { min-height: 70px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links { position: absolute; top: calc(100% + 1px); right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 10px 20px 20px; border-bottom: 1px solid #f0ddd2; background: var(--cream); box-shadow: 0 15px 20px rgba(76,43,26,.06); }
+      .nav-links.open { display: flex; flex-direction: column; }
+      .nav-links a:not(.button) { padding: 12px 4px; font-size: .95rem; }
+      .nav-links .button { margin-top: 8px; }
+      .hero { padding: 39px 0 55px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 22px; }
+      .hero h1 { max-width: 500px; font-size: clamp(2.85rem, 13vw, 4.2rem); }
+      .hero-copy > p { font-size: 1rem; }
+      .hero-art { min-height: min(100vw, 390px); }
+      .hero-photo { inset: 10px 20px 10px 10px; }
+      .hero-badge { right: 0; bottom: 16px; width: 100px; height: 100px; }
+      .hero-sticker { top: 35px; }
+      .perks-row { grid-template-columns: 1fr; gap: 12px; }
+      .perk { justify-content: flex-start; text-align: left; }
+      .menu-section, .visit-section { padding: 72px 0; }
+      .section-heading { margin-bottom: 30px; }
+      .menu-grid { gap: 13px; }
+      .card-image { height: 150px; }
+      .card-content { padding: 15px 13px 16px; }
+      .card-content h3 { font-size: 1.12rem; }
+      .card-content p { min-height: 62px; font-size: .8rem; }
+      .card-bottom { align-items: flex-start; flex-direction: column; }
+      .about-section { padding: 62px 0; }
+      .about-grid { grid-template-columns: 1fr; gap: 35px; }
+      .about-image { width: 85%; margin: 0 auto; }
+      .about-image img { height: 340px; }
+      .about-copy h2 { font-size: 2.35rem; }
+      .visit-grid { grid-template-columns: 1fr; }
+      .info-card { padding: 25px; }
+      .cta-section { padding-bottom: 60px; }
+      .cta-box { align-items: flex-start; flex-direction: column; padding: 31px 25px; }
+      .footer-top, .footer-bottom { align-items: flex-start; flex-direction: column; }
+      .footer-bottom { gap: 7px; }
+    }
+    @media (max-width: 390px) {
+      .menu-grid { grid-template-columns: 1fr; }
+      .card-image { height: 205px; }
+      .card-content p { min-height: 0; }
+      .card-bottom { align-items: center; flex-direction: row; }
+      .about-points { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="Charlô Doces — página inicial">
+        <span class="brand-mark" aria-hidden="true">♡</span>
+        <span class="brand-name">Charlô Doces<small>feito com carinho</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#inicio">Início</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#horarios">Horários</a>
+        <a href="#contato">Contato</a>
+        <a class="button" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer">Fazer pedido <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-grid container">
+        <div class="hero-copy">
+          <span class="eyebrow">Um docinho muda o dia ✨</span>
+          <h1>A vida fica mais doce com a <span>Charlô!</span></h1>
+          <p>Delícias artesanais preparadas com carinho para deixar seus momentos em Santarém ainda mais gostosos.</p>
+          <div class="hero-actions">
+            <a class="button" href="#cardapio">Ver cardápio <span aria-hidden="true">↓</span></a>
+            <a class="button button-outline" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer">Fale com a gente <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-note"><span class="note-icon" aria-hidden="true">✦</span><span><strong>Feito à mão</strong> com ingredientes escolhidos com carinho</span></div>
+        </div>
+        <div class="hero-art" aria-label="Sobremesa artesanal de chocolate">
+          <span class="hero-sparkle" aria-hidden="true">✳</span>
+          <span class="hero-sticker" aria-hidden="true">♡</span>
+          <div class="hero-photo"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=85" alt="Bolo de chocolate decorado com frutas vermelhas" fetchpriority="high"></div>
+          <div class="hero-badge"><strong>100%</strong><span>feito com amor</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="perks" aria-label="Nossos diferenciais">
+      <div class="perks-row container">
+        <div class="perk"><span aria-hidden="true">🍓</span><span>Sabores que abraçam</span></div>
+        <div class="perk"><span aria-hidden="true">🍰</span><span>Produção artesanal</span></div>
+        <div class="perk"><span aria-hidden="true">📍</span><span>Feito em Santarém, Pará</span></div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="cardapio">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Escolha sua felicidade</span>
+          <h2>Um cardápio cheio de carinho</h2>
+          <p>Tem sempre uma delícia esperando para adoçar seu dia. Escolha a sua e peça pelo Instagram!</p>
+        </div>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Bolo artesanal de chocolate" loading="lazy"><span class="tag">Queridinho</span></div>
+            <div class="card-content"><h3>Bolos artesanais</h3><p>Camadas fofinhas, recheios generosos e aquele toque caseiro.</p><div class="card-bottom"><span class="price">A partir de R$ 12</span><a class="text-link" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer">Consultar <span aria-hidden="true">↗</span></a></div></div>
+          </article>
+          <article class="menu-card">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=80" alt="Sobremesa cremosa com frutas" loading="lazy"><span class="tag">Delícia nova</span></div>
+            <div class="card-content"><h3>Sobremesas</h3><p>Texturas cremosas e combinações irresistíveis para se apaixonar.</p><div class="card-bottom"><span class="price">A partir de R$ 10</span><a class="text-link" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer">Consultar <span aria-hidden="true">↗</span></a></div></div>
+          </article>
+          <article class="menu-card">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1551024506-0becb826d7ea?auto=format&fit=crop&w=700&q=80" alt="Docinhos artesanais para compartilhar" loading="lazy"></div>
+            <div class="card-content"><h3>Combos especiais</h3><p>Uma seleção caprichada para dividir — ou guardar só para você.</p><div class="card-bottom"><span class="price">A partir de R$ 25</span><a class="text-link" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer">Consultar <span aria-hidden="true">↗</span></a></div></div>
+          </article>
+          <article class="menu-card">
+            <div class="card-image"><img src="https://images.unsplash.com/photo-1583338917451-face2751d8d5?auto=format&fit=crop&w=700&q=80" alt="Brigadeiros de chocolate e confeitos" loading="lazy"><span class="tag">Feito à mão</span></div>
+            <div class="card-content"><h3>Brigadeiros gourmet</h3><p>Pequenos no tamanho, gigantes no sabor. Perfeitos para qualquer hora.</p><div class="card-bottom"><span class="price">A partir de R$ 4</span><a class="text-link" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer">Consultar <span aria-hidden="true">↗</span></a></div></div>
+          </article>
+        </div>
+        <p class="price-note">*Valores ilustrativos. Consulte sabores, disponibilidade e preços atualizados pelo Instagram.</p>
+      </div>
+    </section>
+
+    <section class="about-section" id="sobre">
+      <div class="about-grid container">
+        <div class="about-image"><img src="https://images.unsplash.com/photo-1556217477-d325251ece38?auto=format&fit=crop&w=900&q=85" alt="Confeiteira preparando uma sobremesa artesanal" loading="lazy"></div>
+        <div class="about-copy">
+          <span class="eyebrow">Um pouquinho da nossa história</span>
+          <h2>Do nosso carinho para a sua mesa.</h2>
+          <p>A Charlô Doces nasceu da vontade de transformar ingredientes simples em momentos especiais. Cada receita é preparada artesanalmente, com cuidado em cada detalhe — porque a gente acredita que carinho também se sente no sabor.</p>
+          <div class="about-points">
+            <div class="about-point"><span aria-hidden="true">♡</span> Preparado com carinho</div>
+            <div class="about-point"><span aria-hidden="true">✦</span> Ingredientes selecionados</div>
+            <div class="about-point"><span aria-hidden="true">🍰</span> Feito artesanalmente</div>
+            <div class="about-point"><span aria-hidden="true">📍</span> Em Santarém, Pará</div>
+          </div>
+          <a class="button" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer">Conheça nosso Instagram <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit-section" id="horarios">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Estamos te esperando</span>
+          <h2>Encontre a Charlô</h2>
+          <p>Venha nos visitar ou consulte pelo Instagram a disponibilidade e as opções de pedido.</p>
+        </div>
+        <div class="visit-grid">
+          <article class="info-card" id="contato">
+            <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+            <h3>Nosso endereço</h3>
+            <p class="address">Rua Adriano Pimentel, 308<br>Santarém, Pará, Brasil</p>
+            <p>Vai passar por aqui? Será um prazer adoçar seu dia.</p>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rua+Adriano+Pimentel%2C+308%2C+Santar%C3%A9m%2C+Par%C3%A1" target="_blank" rel="noopener noreferrer">Abrir no Google Maps ↗</a>
+          </article>
+          <article class="info-card">
+            <div class="info-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <h3>Horário de funcionamento</h3>
+            <div class="hours-list" aria-label="Horários de funcionamento">
+              <div class="hours-row"><strong>Segunda a sábado</strong><span>15h00 – 22h00</span></div>
+              <div class="hours-row"><strong>Domingo</strong><span>09h00 – 22h00</span></div>
+            </div>
+            <p class="hours-footnote">Horários sujeitos a alterações em datas especiais. Consulte nossas redes sociais.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-box container">
+        <div class="cta-copy"><span class="eyebrow">Seu próximo doce favorito está aqui</span><h2>Vamos adoçar o seu dia?</h2><p>Chame a Charlô no Instagram e consulte o cardápio de hoje.</p></div>
+        <a class="button" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer">Pedir pelo Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div><a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true">♡</span><span class="brand-name">Charlô Doces<small>feito com carinho</small></span></a><p class="footer-note">Um carinho em forma de doce, em Santarém, Pará.</p></div>
+        <a class="social-link" href="https://www.instagram.com/charlodoces/" target="_blank" rel="noopener noreferrer" aria-label="Siga a Charlô Doces no Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+          @charlodoces
+        </a>
+      </div>
+      <div class="footer-bottom"><p>© <span id="current-year">2026</span> Charlô Doces. Todos os direitos reservados.</p><p>Feito com carinho e um pouquinho de açúcar ♡</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
+      navLinks.classList.toggle('open', !isOpen);
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu');
+      });
+    });
+
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
